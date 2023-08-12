@@ -9,13 +9,29 @@ class Post extends Model
 {
     use HasFactory;
     // 哪些字段 可以 修改：保护 数据库
-    protected $fillable=['id','title','body'];
+    protected $fillable=[
+        'cover_image',
+        'title',
+        'slug',
+        'body',
+        'meta_description',
+        'published_at',
+        'featured',
+        'author_id',
+        'category_id',
+    ];
+
+
+
+
+
 
     public function user()
     {
         // post belongs To User
         // define relation
-        return $this->belongsTo(User::class)->withDefault('Admin User');
+        //                                     外键
+        return $this->belongsTo(User::class, 'author_id')->withDefault('Admin User');
     }
 
     public function category()

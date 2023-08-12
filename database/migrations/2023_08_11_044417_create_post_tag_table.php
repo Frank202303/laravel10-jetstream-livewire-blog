@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
+            // 没有写                                'posts'
+            $table->foreignId('post_id')->constrained()->onDelete('cascade');
+            // 没有写                               'tags'
+            $table->foreignId('tag_id')->constrained()->onDelete('cascade');
+
             $table->timestamps();
         });
     }
