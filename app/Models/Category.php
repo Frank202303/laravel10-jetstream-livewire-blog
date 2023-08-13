@@ -41,4 +41,25 @@ class Category extends Model
         //                                 外键
         return $this->hasMany(Category::class,'parent_id')->with('categories');
     }
+
+
+    /// get method: in MODEL
+    /// get method
+    /// get method
+    // so in blade: we can use {{ $post->title() }}
+    // so in blade: we can use {{ $post->title() }}
+    // so in blade: we can use {{ $post->title() }}
+    public function name(): string
+    {
+        return $this->name;
+    }
+    public function slug(): string
+    {
+        return $this->slug;
+    }
+    public function parentId(): int
+    {
+        return $this->parent_id;
+    }
+
 }

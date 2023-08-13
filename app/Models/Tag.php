@@ -16,4 +16,20 @@ class Tag extends Model
         // define relation
         return $this->belongsToMany(Post::class);
     }
+
+
+    // get method: in MODEL
+    /// get method
+    /// get method
+    // so in blade: we can use {{ $post->title() }}
+    // so in blade: we can use {{ $post->title() }}
+    // so in blade: we can use {{ $post->title() }}
+    public function name(): string
+    {
+        return $this->name;
+    }
+    public function slug(): string
+    {
+        return $this->slug;
+    }
 }
