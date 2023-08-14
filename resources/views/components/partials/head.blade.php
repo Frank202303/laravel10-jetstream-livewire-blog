@@ -13,6 +13,8 @@
 <link rel="preconnect" href="https://fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
+<Script src="{{ asset('js/main.js') }}"  defer> </Script>
+<Script src="{{ asset('js/drop-down.js') }}"  defer> </Script>
 <!-- Scripts -->
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
