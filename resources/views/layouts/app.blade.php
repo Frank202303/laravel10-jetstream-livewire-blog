@@ -21,6 +21,10 @@
         <x-banner />
 
         <div class="min-h-screen bg-gray-100">
+
+            {{-- app.blade.php
+                通过 @livewire使用
+                navigation-menu VIEW --}}
             @livewire('navigation-menu')
 
             <!-- Page Heading -->
