@@ -27,7 +27,7 @@
         <ul class="list-reset lg:flex justify-end flex-1 items-center">
           @auth
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                <x-nav-link href="{{ route('dashboard.index') }}" :active="request()->routeIs('dashboard.index')">
                     {{ __('Dashboard') }}
                 </x-nav-link>
             </div>

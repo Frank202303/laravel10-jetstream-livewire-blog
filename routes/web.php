@@ -41,8 +41,10 @@ Route::group(['middleware'=>['auth'],  'prefix'=>'dashboard'],function(){
 
         Route::get('create',[CategoryController::class,'create'])->name('create');
         Route::post('/',[CategoryController::class,'store'])->name('store');
+
         Route::get('{category:slug}/edit',[CategoryController::class,'edit'])->name('edit');
         Route::put('{category:slug}',[CategoryController::class,'update'])->name('update');
+
         Route::delete('{category:slug}/delete',[CategoryController::class,'destroy'])->name('delete');
     });
 
@@ -51,12 +53,12 @@ Route::group(['middleware'=>['auth'],  'prefix'=>'dashboard'],function(){
 
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard.index');
-    })->name('dashboard');
-});
+// Route::middleware([
+//     'auth:sanctum',
+//     config('jetstream.auth_session'),
+//     'verified',
+// ])->group(function () {
+//     Route::get('/dashboard', function () {
+//         return view('dashboard.index');
+//     })->name('dashboard');
+// });
