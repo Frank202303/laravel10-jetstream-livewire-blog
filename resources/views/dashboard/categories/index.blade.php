@@ -7,7 +7,7 @@
         </h2>
     </x-slot >
 
-
+   {{-- important nav info --}}
     <x-slot name="nav">
         <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
             {{-- Index --}}

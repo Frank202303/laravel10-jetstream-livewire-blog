@@ -27,6 +27,13 @@
                 <div class="p-4">
                     <form action="{{ route('categories.store') }}" method="POST">
                         @csrf
+
+                        <div>
+                            <small class="mb-4 text-gray-500" > Note: Select Parent only for subcategory</small>
+                            <select name="parent_id" id="" class="w-full mb-6 bg-indigo-200 border-none">
+                                <option value="">Select Parent Category</option>
+                            </select>
+                        </div>
                         {{-- x-label在laravel8和9版本，
                         使用jetStream时，x-jet-label --}}
                         {{-- label.blade.php在components文件夹里。可以自定义 --}}
@@ -38,6 +45,11 @@
 
                             </x-input-errors>
                         </div>
+
+                        {{-- margin top --}}
+                        <x-button class="mt-12">
+                            {{ __('Create') }}
+                        </x-button>
                     </form>
                 </div>
             </div>
