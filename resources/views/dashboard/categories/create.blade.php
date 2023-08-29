@@ -32,6 +32,10 @@
                             <small class="mb-4 text-gray-500" > Note: Select Parent only for subcategory</small>
                             <select name="parent_id" id="" class="w-full mb-6 bg-indigo-200 border-none">
                                 <option value="">Select Parent Category</option>
+                                {{-- Call to undefined relationship [categories] on model [App\Models\Category]. --}}
+                                @foreach ($categories as $category )
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         {{-- x-label在laravel8和9版本，

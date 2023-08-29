@@ -39,7 +39,8 @@ class Category extends Model
 
 
         //                                 外键
-        return $this->hasMany(Category::class,'parent_id')->with('categories');
+        // return $this->hasMany(Category::class,'parent_id')->with('categories');
+        return $this->hasMany(Category::class,'parent_id');
     }
 
 
