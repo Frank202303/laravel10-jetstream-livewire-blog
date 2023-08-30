@@ -9,7 +9,7 @@ class Subscriber extends Model
 {
     use HasFactory;
     /// use token to unSubscriber
-    protected $fillable=[
+    protected $fillable = [
         'name',
         'email',
         'token',

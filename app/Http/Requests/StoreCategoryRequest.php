@@ -24,8 +24,8 @@ class StoreCategoryRequest extends FormRequest
     {
         return [
             //  the second way
-            'name'=>['required','max:200'],
-            'parent_id'=>['sometimes','nullable','numeric'],
+            'name' => ['required', 'max:200'],
+            'parent_id' => ['sometimes', 'nullable', 'numeric'],
         ];
     }
 }

@@ -10,8 +10,8 @@ class Category extends Model
     use HasFactory;
 
     // slug:鼻涕虫 for SEO
-        // 哪些字段 可以 修改：保护 数据库
-    protected $fillable=[
+    // 哪些字段 可以 修改：保护 数据库
+    protected $fillable = [
         'name',
         'slug',
         'parent_id',
@@ -40,7 +40,7 @@ class Category extends Model
 
         //                                 外键
         // return $this->hasMany(Category::class,'parent_id')->with('categories');
-        return $this->hasMany(Category::class,'parent_id');
+        return $this->hasMany(Category::class, 'parent_id');
     }
 
 
@@ -62,5 +62,4 @@ class Category extends Model
     {
         return $this->parent_id;
     }
-
 }

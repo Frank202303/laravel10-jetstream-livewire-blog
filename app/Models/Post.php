@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
     // 哪些字段 可以 修改：保护 数据库
-    protected $fillable=[
+    protected $fillable = [
         'cover_image',
         'title',
         'slug',
@@ -43,7 +43,7 @@ class Post extends Model
     public function tags()
     {
         // define relation
-        return $this->belongsToMany(Tag::class,'post_tag');
+        return $this->belongsToMany(Tag::class, 'post_tag');
     }
 
     /// get method: in MODEL
@@ -60,7 +60,7 @@ class Post extends Model
     {
         return $this->title;
     }
- 
+
     public function coverImage(): string
     {
         return $this->cover_image;
@@ -93,7 +93,4 @@ class Post extends Model
     {
         return $this->category_id;
     }
-
-
-
 }

@@ -32,7 +32,7 @@ class CategoryController extends Controller
     {
         return view(
             'dashboard.categories.create',
-            ['categories'=> Category::with('subCategories')->whereNull('parent_id')->get()],
+            ['categories' => Category::with('subCategories')->whereNull('parent_id')->get()],
         );
     }
 
@@ -56,14 +56,14 @@ class CategoryController extends Controller
         // we can
         // $this->dispatch(CreateCategoriesTable::fromRequest($request));
         /// we also can
-        $category= new Category();
+        $category = new Category();
         $category->name = $request->name;
         $category->parent_id = $request->parent_id;
         ///
-        $category->slug = Str::slug($request->name)   ;
+        $category->slug = Str::slug($request->name);
         $category->save();
 
-        return redirect()->route('categories.index')->with('success','Category successfully created');
+        return redirect()->route('categories.index')->with('success', 'Category successfully created');
     }
 
 
@@ -95,15 +95,15 @@ class CategoryController extends Controller
         // 输出  {"_token":"D7jNNJApud0WDvgjjeCyt5bw4U6mivUJ2ho7BamJ","_method":"PUT","name":"HolidayTRY"}
         // return $request;
 
-        $this->validate($request,[
-            'name'=>['required','max:200', 'unique:categories'],
-            'parent_id'=>['sometimes','nullable']
+        $this->validate($request, [
+            'name' => ['required', 'max:200', 'unique:categories'],
+            'parent_id' => ['sometimes', 'nullable']
         ]);
         $category->name = $request->name;
-        $category->slug =  Str::slug($request->name) ;
+        $category->slug =  Str::slug($request->name);
         $category->save();
 
-        return redirect()->route('categories.index')->with('success','Category successfully updated');
+        return redirect()->route('categories.index')->with('success', 'Category successfully updated');
     }
 
     /**
