@@ -104,6 +104,7 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Category successfully updated');
+        // 调试 专用 return redirect()->route('categories.index')->with('error', 'Category successfully updated');
     }
 
     /**
