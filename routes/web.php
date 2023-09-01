@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
@@ -61,6 +62,21 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
         Route::put('{tag:slug}', [TagController::class, 'update'])->name('update');
 
         Route::delete('{tag:slug}/delete', [TagController::class, 'destroy'])->name('delete');
+    });
+
+    // Posts
+    Route::group(['prefix' => 'posts',  'as' => 'posts.'], function () {
+
+        Route::get('/', [PostController::class, 'index'])->name('index');
+
+        Route::get('create', [PostController::class, 'create'])->name('create');
+        Route::post('/', [PostController::class, 'store'])->name('store');
+
+        Route::get('{tag:slug}/edit', [PostController::class, 'edit'])->name('edit');
+        Route::put('{tag:slug}', [PostController::class, 'update'])->name('update');
+        // show
+        Route::get('{tag:slug}', [PostController::class, 'show'])->name('show');
+        Route::delete('{tag:slug}/delete', [PostController::class, 'destroy'])->name('delete');
     });
 });
 
