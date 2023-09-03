@@ -41,9 +41,7 @@
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="$category->name" required autofocus autocomplete="name" />
                             <span class="mt-2 text-xs text-gray-400 ">Maximum 200 characters</span>
-                            <x-input-error for='name' class='mt-2'>
-
-                                </x-input-errors>
+                            <x-input-error for='name' class='mt-2' />
                         </div>
 
                         {{-- margin top --}}

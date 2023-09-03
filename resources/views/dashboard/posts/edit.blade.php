@@ -43,7 +43,7 @@
                             <span class="mt-2 text-xs text-gray-400 ">Maximum 200 characters</span>
                             <x-input-error for='name' class='mt-2'>
 
-                                </x-input-errors>
+                            </x-input-error>
                         </div>
 
                         {{-- margin top --}}
