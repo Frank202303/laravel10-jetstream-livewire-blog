@@ -15,10 +15,13 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    <!-- livewire Styles -->
-    @livewireStyles
+
     {{-- blade-ui-kit  Styles --}}
     @bukStyles(true)
+
+    <!-- livewire Styles -->
+    @livewireStyles
+
 </head>
 
 <body class="font-sans antialiased">
@@ -51,10 +54,13 @@
 
     @stack('modals')
 
-    {{-- livewireScripts --}}
-    @livewireScripts
+
     {{-- blade-ui-kit  --Scripts --}}
     @bukScripts(true)
+
+    {{-- livewireScripts --}}
+    @livewireScripts
+
 </body>
 
 </html>
