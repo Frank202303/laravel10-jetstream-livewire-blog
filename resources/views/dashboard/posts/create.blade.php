@@ -76,9 +76,10 @@
                             </div>
 
                             {{-- Tags --}}
-                            <div>
-                                <x-label for="tags[]" value="{{ __('Tags') }}" />
-                            </div>
+                            {{-- 自定义组件 tags.blade.php在 Component文件夹 --}}
+                            {{-- 传参数 --}}
+                            <x-tags :tags="$tags" />
+
 
 
                             {{-- Meta description --}}
