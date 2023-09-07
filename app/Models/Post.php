@@ -21,11 +21,6 @@ class Post extends Model
         'category_id',
     ];
 
-
-
-
-
-
     public function user()
     {
         // post belongs To User
@@ -92,5 +87,15 @@ class Post extends Model
     public function categoryId(): int
     {
         return $this->category_id;
+    }
+
+    public  static function searchPost($search)
+    {
+        return empty($search) ?
+            static::query()
+            :
+            static::query()->where('id', 'like', '%', $search . '%')
+            ->orWhere('title', 'like', '%', $search . '%')
+            ->orWhere('body', 'like', '%', $search . '%');
     }
 }
