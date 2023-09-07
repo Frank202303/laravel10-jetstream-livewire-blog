@@ -1,7 +1,67 @@
-<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+<div class="max-w-7xl mx-auto ">
     <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
         {{-- Main Heading --}}
-        <div>
+        <div class="flex w-full p-3 space-x-2">
+
+            {{-- Search Box --}}
+            <div class="w-3/6">
+                <span
+                    class="absolute z-10 items-center justify-center w-8 h-full py-3
+                     pl-3 text-base font-normal leading-snug text-center text-gray-400
+                     bg-transparent rounded ">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+                    </svg>
+                </span>
+
+                <input wire:model.debounce.300ms='search' type="text"
+                    class="relative
+                     w-full px-3 py-3 pl-10 text-sm text-gray-700 placeholder-gray-400
+                      bg-gray-100  border-none rounded shadow-inner outline-none
+                      focus:outline-none focus:shadow-outline focus:ring-0 focus:bg-indigo-50 "
+                    placeholder="Search Post">
+            </div>
+
+            {{-- Order By --}}
+            <div class="relative w-1/6">
+                <select wire:model='orderBy' id=""
+                    class="relative w-full px-3 py-3 pl-10
+                text-sm text-gray-700 placeholder-gray-400 bg-gray-100 border-none
+                 rounded  outline-none  focus:outline-none focus:shadow-outline focus:ring-0
+                  focus:bg-indigo-50">
+                    <option value="id">Id</option>
+                    <option value="title">Title</option>
+                    <option value="created_at">Created At</option>
+                </select>
+            </div>
+
+            {{-- Order Asc --}}
+            <div class="relative w-1/6">
+                <select wire:model='orderAsc' id=""
+                    class="relative w-full px-3 py-3 pl-10
+                            text-sm text-gray-700 placeholder-gray-400 bg-gray-100 border-none
+                             rounded  outline-none  focus:outline-none focus:shadow-outline focus:ring-0
+                              focus:bg-indigo-50">
+                    <option value="1">Asc</option>
+                    <option value="0">Desc</option>
+                </select>
+            </div>
+
+            {{-- Per Page --}}
+            <div class="relative w-1/6">
+                <select wire:model='perPage' id=""
+                    class="relative w-full px-3 py-3 pl-10
+                text-sm text-gray-700 placeholder-gray-400 bg-gray-100 border-none
+                 rounded  outline-none  focus:outline-none focus:shadow-outline focus:ring-0
+                  focus:bg-indigo-50">
+                    <option value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
 
         </div>
         {{-- Table --}}
@@ -16,11 +76,15 @@
                     </th>
 
                     <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
-                        Name
+                        Title
                     </th>
 
                     <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
-                        Sub posts
+                        Category
+                    </th>
+
+                    <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
+                        Featured
                     </th>
 
                     <th class="px-2 py-3 text-xs tracking-wider text-left uppercase">
@@ -47,12 +111,17 @@
                         <td class="px-2 py-4 whitespace-nowrap">
                             {{ $post->id }}
                         </td>
+                        {{-- 最多显示 40个字符 --}}
                         <td class="px-2 py-4 whitespace-nowrap">
-                            {{ $post->name }}
+                            {{ Str::limit($post->title, 40, '...') }}
                         </td>
 
                         <td class="px-2 py-4 whitespace-nowrap">
+                            {{ $post->category->name }}
+                        </td>
 
+                        <td class="px-2 py-4 whitespace-nowrap">
+                            Featured
                         </td>
 
                         <td class="px-2 py-4 whitespace-nowrap">
