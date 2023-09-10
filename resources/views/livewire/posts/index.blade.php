@@ -166,5 +166,10 @@
                 @endforeach
             </tbody>
         </table>
+
+        {{-- 添加 pagination --}}
+        <div class="p-2 bg-indigo-300">
+            {{ $posts->links() }}
+        </div>
     </div>
 </div>
