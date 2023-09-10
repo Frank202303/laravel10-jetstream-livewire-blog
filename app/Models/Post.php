@@ -89,13 +89,13 @@ class Post extends Model
         return $this->category_id;
     }
 
-    public  static function searchPost($search)
+    public static function searchPost($search)
     {
         return empty($search) ?
             static::query()
             :
-            static::query()->where('id', 'like', '%', $search . '%')
-            ->orWhere('title', 'like', '%', $search . '%')
-            ->orWhere('body', 'like', '%', $search . '%');
+            static::query()->where('id', 'like', '%' . $search . '%')
+            ->orWhere('title', 'like', '%' . $search . '%')
+            ->orWhere('body', 'like', '%' . $search . '%');
     }
 }
