@@ -59,6 +59,7 @@
                                         </option>
                                     @endforeach
                                 </select>
+                                <x-input-error for='category_id' class='mt-2' />
                             </div>
 
                             {{-- Body --}}
@@ -72,7 +73,9 @@
                             {{-- Schedule --}}
                             <div>
                                 <x-label for="published_at" value="{{ __('Schedule Date') }}" />
-                                <x-pikaday name="published_at" />
+                                {{-- Invalid datetime format: 1292 Incorrect datetime value: '15/09/2023' for column `blog`.`posts`.`published_at` at row 1 --}}
+                                <x-pikaday name="published_at" format='YYYY-MM-DD' />
+                                <x-input-error for='published_at' class='mt-2' />
                             </div>
 
                             {{-- Tags --}}
