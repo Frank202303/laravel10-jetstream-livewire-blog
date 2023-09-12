@@ -13,12 +13,13 @@ class Delete extends Component
 
     public function confirmPostDeletion()
     {
-        dump($this->confirmingPostDeletion); // 打印当前状态
+        // https://www.youtube.com/watch?v=WjD0bTCLGg0&list=PL1JpS8jP1wgC8Uud_DKhL3jAtcPzeQ9pn&index=11
+        // dump($this->confirmingPostDeletion); // 打印当前状态
         $this->resetErrorBag();
         $this->dispatchBrowserEvent('confirming-delete-post');
         $this->confirmingPostDeletion = true;
     }
-    public function deletePost()
+    public function deletePost($id)
     {
         // 先删除图片
         File::delete(

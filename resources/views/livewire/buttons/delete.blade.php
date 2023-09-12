@@ -1,5 +1,5 @@
 <div class="p-2 bg-red-200 rounded">
-    <a wire:click='confirmPostDeletion' wire:loading.attr='disabled' class="cursor-pointer">
+    <a wire:click='deletePost({{ $post->id }})' wire:loading.attr='disabled' class="cursor-pointer">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6  text-red-500">
             <path stroke-linecap="round" stroke-linejoin="round"
@@ -7,26 +7,4 @@
         </svg>
     </a>
 
-    <x-dialog-modal wire:model='confirmingPostDeletion'>
-
-        <x-slot name='title'>
-            {{ __('Delete Post') }}
-        </x-slot>
-
-        <x-slot name='content'>
-            {{ __('Are you sure you want to delete this Post?') }}
-        </x-slot>
-
-        <x-slot name='footer'>
-            <x-secondary-button wire:click="$toggle('confirmingPostDeletion')" wire:loading.attr='disabled'>
-                {{ __('Nerver Mind') }}
-            </x-secondary-button>
-
-            <x-danger-button wire:click='deletePost' wire:loading.attr='disabled'>
-                {{ __('Delete Post') }}
-            </x-danger-button>
-
-        </x-slot>
-
-    </x-dialog-modal>
 </div>
