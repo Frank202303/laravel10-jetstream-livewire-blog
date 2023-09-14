@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 
@@ -107,16 +111,57 @@ class PostController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
+
     {
-        //
+        $categories = Category::all();
+        $tags = Tag::all();
+        ///  ??? 为什么 没有 提醒
+        $oldTags = $post->tags->pluck('id')->toArray();
+        return view(
+            'dashboard.posts.edit',
+            compact('post', 'categories', 'tags', 'oldTags'),
+        );
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Post $post)
+    /// UpdatePostRequest
+    public function update(UpdatePostRequest $request, Post $post)
+
     {
+        // return $request;
+
+
+        $post->title                  = $request->title;
+        $post->slug                  =  Str::slug($request->title);
+        $post->body                  = $request->body;
+        $post->meta_description      = $request->meta_description;
+        $post->published_at           = $request->published_at;
+        $post->author_id              = Auth::user()->id;
+        $post->category_id            = $request->category_id;
+
+
+        // save file in: blog\storage\app\public\images
+        // save file name in:  $post->cover_image
+        if ($request->hasFile('cover_image')) {
+            $oldFileName = $post->cover_image;
+            $image = $request->file('cover_image');
+            $imageName = $image->getClientOriginalName();
+            $imageFirstName = explode('.', $imageName)[0];
+            $fileExtension = time() . '.'
+                . $imageFirstName . '.'
+                . $image->getClientOriginalExtension();
+            $location = storage_path('app/public/images/' . $fileExtension);
+            // 压缩 并 保存
+            Image::make($image)->resize(1200, 630)->save($location);
+            $post->cover_image            = $request->cover_image;
+            // delete previous image
+            File::delete(storage_path('app/public/images/' . $oldFileName));
+        }
+        $post->save();
         //
+        return  redirect()->route('posts.index')->with('success', 'Post successfully updated');
     }
 
     /**

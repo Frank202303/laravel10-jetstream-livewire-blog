@@ -72,11 +72,11 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
         Route::get('create', [PostController::class, 'create'])->name('create');
         Route::post('/', [PostController::class, 'store'])->name('store');
 
-        Route::get('{tag:slug}/edit', [PostController::class, 'edit'])->name('edit');
-        Route::put('{tag:slug}', [PostController::class, 'update'])->name('update');
+        Route::get('{post:slug}/edit', [PostController::class, 'edit'])->name('edit');
+        Route::put('{post:slug}', [PostController::class, 'update'])->name('update');
         // show
-        Route::get('{tag:slug}', [PostController::class, 'show'])->name('show');
-        Route::delete('{tag:slug}/delete', [PostController::class, 'destroy'])->name('delete');
+        Route::get('{post:slug}', [PostController::class, 'show'])->name('show');
+        Route::delete('{post:slug}/delete', [PostController::class, 'destroy'])->name('delete');
     });
 });
 

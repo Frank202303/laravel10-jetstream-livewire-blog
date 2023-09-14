@@ -47,10 +47,7 @@ class Post extends Model
     // so in blade: we can use {{ $post->title() }}
     // so in blade: we can use {{ $post->title() }}
     // so in blade: we can use {{ $post->title() }}
-    public function id(): int
-    {
-        return $this->id;
-    }
+
     public function title(): string
     {
         return $this->title;
@@ -64,10 +61,10 @@ class Post extends Model
     {
         return $this->body;
     }
-    public function slug(): string
-    {
-        return $this->slug;
-    }
+    // public function slug(): string
+    // {
+    //     return $this->slug;
+    // }
     public function metaDescription(): string
     {
         return $this->meta_description;
