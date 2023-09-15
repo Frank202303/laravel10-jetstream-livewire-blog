@@ -91,7 +91,7 @@ class PostController extends Controller
             $location = storage_path('app/public/images/' . $fileExtension);
             // 压缩 并 保存
             Image::make($image)->resize(1200, 630)->save($location);
-            $post->cover_image            = $request->cover_image;
+            $post->cover_image            =  $fileExtension;
         }
         $post->save();
         // Call to undefined method App\Models\Post::sync()
@@ -155,7 +155,7 @@ class PostController extends Controller
             $location = storage_path('app/public/images/' . $fileExtension);
             // 压缩 并 保存
             Image::make($image)->resize(1200, 630)->save($location);
-            $post->cover_image            = $request->cover_image;
+            $post->cover_image            = $fileExtension;
             // delete previous image
             File::delete(storage_path('app/public/images/' . $oldFileName));
         }

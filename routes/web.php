@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\PostController;
@@ -23,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 // });
 // Home Route,                                   通用 别名是'home'
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 
 
 Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {

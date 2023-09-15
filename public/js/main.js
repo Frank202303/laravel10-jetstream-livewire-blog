@@ -1,7 +1,8 @@
 var scrollpos = window.scrollY;
       var header = document.getElementById("header");
       var navcontent = document.getElementById("nav-content");
-      var navaction = document.getElementById("navAction");
+      /// 因为我们删除了右上角的action按钮，所以要删除与navaction相关的代码
+    //   var navaction = document.getElementById("navAction");
       var brandname = document.getElementById("brandname");
       var toToggle = document.querySelectorAll(".toggleColour");
 
@@ -11,10 +12,10 @@ var scrollpos = window.scrollY;
 
         if (scrollpos > 10) {
           header.classList.add("bg-white");
-          navaction.classList.remove("bg-white");
-          navaction.classList.add("gradient");
-          navaction.classList.remove("text-gray-800");
-          navaction.classList.add("text-white");
+        //   navaction.classList.remove("bg-white");
+        //   navaction.classList.add("gradient");
+        //   navaction.classList.remove("text-gray-800");
+        //   navaction.classList.add("text-white");
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-gray-800");
@@ -25,10 +26,10 @@ var scrollpos = window.scrollY;
           navcontent.classList.add("bg-white");
         } else {
           header.classList.remove("bg-white");
-          navaction.classList.remove("gradient");
-          navaction.classList.add("bg-white");
-          navaction.classList.remove("text-white");
-          navaction.classList.add("text-gray-800");
+        //   navaction.classList.remove("gradient");
+        //   navaction.classList.add("bg-white");
+        //   navaction.classList.remove("text-white");
+        //   navaction.classList.add("text-gray-800");
           //Use to switch toggleColour colours
           for (var i = 0; i < toToggle.length; i++) {
             toToggle[i].classList.add("text-white");
