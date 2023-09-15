@@ -23,7 +23,7 @@ class Delete extends Component
     {
         // 先删除图片
         File::delete(
-            public_path('img/blog/' . $this->post->cover_image)
+            storage_path('app/public/images/' . $this->post->cover_image)
         );
         // 再 删除post
         $this->post->delete();
