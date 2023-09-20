@@ -2,8 +2,12 @@
 
 namespace App\Models;
 
+
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Database\Eloquent\Builder;
 
 class Post extends Model
 {
@@ -94,5 +98,32 @@ class Post extends Model
             static::query()->where('id', 'like', '%' . $search . '%')
             ->orWhere('title', 'like', '%' . $search . '%')
             ->orWhere('body', 'like', '%' . $search . '%');
+    }
+
+    /// Local Scopes: 类似于 get方法
+    public function scopeCategory(Builder $query, string $category): Builder
+    {
+        return $query->where('category_id', $category);
+    }
+    public function scopeFeatured(Builder $query): Builder
+    {
+        return $query->where('featured', true);
+    }
+
+    public function scopePublished(Builder $query): Builder
+    {
+        $today = new \DateTime();
+        return $query->whereNotNull('published_at')
+            ->where('published_at', '<=', $today);
+    }
+
+    public function scopeRecentAsc(Builder $query): Builder
+    {
+        return $query->orderBy('title', 'asc');
+    }
+
+    public function scopeRecentDesc(Builder $query): Builder
+    {
+        return $query->orderBy('title', 'desc');
     }
 }
