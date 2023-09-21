@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Post;
 
 use App\Models\Category;
+use App\Models\Post;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -22,15 +23,64 @@ class ShowPost extends Component
 
     public function render()
     {
-        $posts = [1, 5, 6];
+        // use Local Scopes
+        $posts = Post::published();;
         $categories = Category::all();
-        return view('livewire.posts.show-post', compact('posts', 'categories'));
+
+        if ($this->category) {
+            // use Local Scopes
+            $posts->category($this->category);
+        }
+
+        //?? $posts->recentDesc();
+        $posts->{$this->sortBy}(); // ??
+
+        return view(
+            'livewire.posts.show-post',
+            [
+                'posts' => $posts->paginate(10),
+                'categories' => $categories,
+                'selectedCategory' => $this->category,
+                'selectedSortBy' => $this->sortBy,
+            ]
+
+        );
     }
 
-    public function sortBy($order)
+    public function sortBy($sort): void
     {
+
+        // 如果是合法的sort类型，则使用
+        //否则使用默认值recentDesc
+        $this->sortBy =
+            $this->validSort($sort) ? $sort : 'recentDesc';
     }
-    public function toggleCategory($categoryId)
+
+    public function toggleCategory($categoryId): void
     {
+        $this->category =
+            $this->category !== $categoryId && $this->categoryExist($categoryId)
+            ? $categoryId
+            : null;
+    }
+
+    /// return type: bool
+    public function categoryExist($categoryId): bool
+    {
+        return Category::where('id', $categoryId)->exists();
+    }
+
+
+    public function validSort($sort): bool
+    {
+        // check if  $sort is in   [ 'recentAsc', 'recentDesc']
+        return in_array(
+            $sort,
+            [
+                'recentAsc',
+                'recentDesc',
+            ]
+
+        );
     }
 }
