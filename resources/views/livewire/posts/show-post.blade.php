@@ -1,11 +1,20 @@
 <div class="grid grid-cols-4 gap-8">
     {{-- Main Content --}}
-    <div class="col-span-3">
+    <div class="col-span-3 space-y-3">
         @foreach ($posts as $post)
             <div class="bg-indigo">
-                POSTS
+                {{-- // 在components新建一个blade文件post.blade.php，我们称为blade component
+                // 在这里可以使用这个component : x-blog.post --}}
+                {{-- 传递参数 --}}
+                <x-blog.post :post="$post" />
+
             </div>
         @endforeach
+        {{-- 分页 Page Links --}}
+        <div class="p-2">
+            {{ $posts->links() }}
+        </div>
+
     </div>
 
     {{-- Side bar/Navigation --}}
