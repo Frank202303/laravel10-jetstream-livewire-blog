@@ -9,7 +9,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
-
+/// 当用户订阅时，发送 邮件给用户
+// 抄送 给 '517277381@qq.com'【admin】
 class SubscriberMailable extends Mailable
 {
     public $data;

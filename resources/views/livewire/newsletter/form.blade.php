@@ -1,5 +1,8 @@
 <div class="mb-4">
+    {{-- 提示 用户 订阅 成功 --}}
     <x-ui.alerts />
+
+    {{-- 这个 不需要 定义action --}}
     <form wire:submit.prevent='formSubmit'>
         {{-- max-w-4xl：设置input的width --}}
         <div class=" container max-w-4xl mx-auto text-left">
