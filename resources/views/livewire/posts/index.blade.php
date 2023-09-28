@@ -121,7 +121,9 @@
                         </td>
 
                         <td class="px-2 py-4 whitespace-nowrap">
-                            Featured
+                            {{-- 不能这么写  :name="featured" --}}
+                            {{-- key 有什么作用？ --}}
+                            <livewire:buttons.toggle :post="$post" :name="'featured'" :key="'featured' . $post->id" />
                         </td>
 
                         <td class="px-2 py-4 whitespace-nowrap">
