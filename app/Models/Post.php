@@ -126,4 +126,9 @@ class Post extends Model
     {
         return $query->orderBy('title', 'desc');
     }
+    //  去除 meta description的div
+    public function  metaDescriptionFormat()
+    {
+        return  strip_tags($this->metaDescription());
+    }
 }
