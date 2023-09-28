@@ -25,6 +25,7 @@ class Toggle extends Component
 
     public function updating($name, $value)
     {
+        // key and value
         $this->post->setAttribute($name, $value)->save();
     }
 

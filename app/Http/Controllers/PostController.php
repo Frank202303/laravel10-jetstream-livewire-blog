@@ -99,13 +99,7 @@ class PostController extends Controller
         return  redirect()->route('posts.index')->with('success', 'Post successfully created');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
-    {
-        return view('dashboard.posts.show', []);
-    }
+
 
     /**
      * Show the form for editing the specified resource.

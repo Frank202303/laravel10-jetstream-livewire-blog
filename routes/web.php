@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); //??
 
 
 Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
