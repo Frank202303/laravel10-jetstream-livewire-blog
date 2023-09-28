@@ -18,8 +18,9 @@ class Toggle extends Component
 
     public function mount()
     {
-        //  不能这么写 $this->featured = $this->post->featured;
-        $this->featured = $this->post->getAttribute('featured');
+        //  这2 行代码都可以！！！
+        $this->featured = $this->post->featured;
+        // $this->featured = $this->post->getAttribute('featured');
     }
 
     public function updating($name, $value)
