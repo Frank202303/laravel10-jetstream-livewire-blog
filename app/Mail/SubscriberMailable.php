@@ -15,6 +15,7 @@ class SubscriberMailable extends Mailable
 {
     public $data;
 
+    //因为使用了Queueable，所以要在命令行运行  php artisan queue:work
     use Queueable, SerializesModels;
 
     /**
@@ -22,6 +23,7 @@ class SubscriberMailable extends Mailable
      */
     public function __construct($formData)
     {
+        // 在构造函数里把formData 数据传给 SubscriberMailable的 $this->data
         $this->data = $formData;
     }
 
@@ -31,7 +33,9 @@ class SubscriberMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
+            // 发件人 及  名字
             from: new Address('517277381@qq.com', 'YiMDXian'),
+            // 邮件 的 主题/title
             subject: 'Thank you',
         );
     }
