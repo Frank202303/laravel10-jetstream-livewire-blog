@@ -6,7 +6,9 @@
 
     {{-- Facebook Meta --}}
     @section('og:title', $post->title)
-    @section('og:image', 'storage/images' . $post->cover_image)
+    @section('og:image', 'storage/images/' . $post->cover_image)
+
+    {{-- http://127.0.0.1:8000/storage/images/1694752428.3.jpg --}}
 
     {{-- Title --}}
     @section('title', $post->title)

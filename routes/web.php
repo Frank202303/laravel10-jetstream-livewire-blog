@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
+// post:slug == post->title
 Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); //??
 
 
