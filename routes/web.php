@@ -26,8 +26,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
-// post:slug == post->title
-Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); //??
+
 
 
 Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
@@ -86,6 +85,11 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
 });
 
 
+//Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); 这个路由是通用的，它可以匹配任何slug格式的URL，包括 dashboard 这样的slug。
+// 路由的优先级和匹配顺序上。Laravel 路由是按照定义的顺序进行匹配的，一旦找到匹配的路由，就会停止继续查找。
+// 所以 将通用路由移到最后
+// post:slug == post->title
+Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); //??
 
 // Route::middleware([
 //     'auth:sanctum',
