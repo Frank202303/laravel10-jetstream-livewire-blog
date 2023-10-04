@@ -71,7 +71,16 @@ class Post extends Model
     // }
     public function metaDescription(): string
     {
-        return $this->meta_description;
+        // return $this->meta_description;
+        // 修复TypeError
+        // 原因是meta_description在数据库设置了可以为空
+        // PHP 8.1.17
+        // 10.18.0
+        // App\Models\Post::metaDescription(): Return value must be of type string, null returned
+        // 所以。使用 is_null检查，万一为空，则使用title拼一个 meta_description
+        return is_null($this->meta_description)
+            ? ('<div>' . $this->title . '</div>')
+            : $this->meta_description;
     }
     public function publishedAt(): string
     {
