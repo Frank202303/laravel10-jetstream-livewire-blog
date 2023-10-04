@@ -99,6 +99,7 @@ class CategoryController extends Controller
         // return $request;
 
         $this->validate($request, [
+            // Youtube 老师 把 'unique:categories'删除了
             'name' => ['required', 'max:200', 'unique:categories'],
             'parent_id' => ['sometimes', 'nullable']
         ]);
