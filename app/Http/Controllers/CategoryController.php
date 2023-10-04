@@ -74,7 +74,10 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         // $categories = Category::with('subCategories')->whereNull('parent_id')->get();
-        return view('dashboard.categories.edit', compact('category'));
+        // parent
+        $categories = Category::with('subCategories')->whereNull('parent_id')->get();
+        // dd($categories);
+        return view('dashboard.categories.edit', compact('category', 'categories'));
     }
 
     /**
@@ -101,6 +104,10 @@ class CategoryController extends Controller
         ]);
         $category->name = $request->name;
         $category->slug =  Str::slug($request->name);
+        if (!is_null($request->parent_id)) {
+            $category->parent_id = $request->parent_id;
+        }
+
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Category successfully updated');
@@ -115,5 +122,14 @@ class CategoryController extends Controller
         $category->delete();
         // with('success', 'Category deleted');放在session里
         return redirect()->route('categories.index')->with('success', 'Category deleted');
+    }
+
+    public function subCategory()
+    {
+        // only return child Category
+        return view(
+            'dashboard.categories.subcategory',
+            ['categories' => Category::with('subCategories')->whereNotNull('parent_id')->get()],
+        );
     }
 }

@@ -52,6 +52,8 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
         Route::put('{category:slug}', [CategoryController::class, 'update'])->name('update');
 
         Route::delete('{category:slug}/delete', [CategoryController::class, 'destroy'])->name('delete');
+        //
+        Route::get('subcategory', [CategoryController::class, 'subCategory'])->name('subCategory');
     });
 
     // Tags

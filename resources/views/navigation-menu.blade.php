@@ -22,6 +22,15 @@
                         {{ __('Categories') }}
                     </x-nav-link>
                 </div>
+
+                {{-- SubCategories --}}
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-nav-link href="{{ route('categories.subCategory') }}" :active="request()->routeIs('categories.subCategory')">
+                        {{ __('Subcategories') }}
+                    </x-nav-link>
+                </div>
+
+
                 {{-- Tags --}}
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link href="{{ route('tags.index') }}" :active="request()->routeIs('tags.index')">

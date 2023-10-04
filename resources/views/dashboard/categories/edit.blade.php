@@ -30,6 +30,19 @@
                         @csrf
                         @method('PUT')
 
+                        {{-- 是child时，显示 select --}}
+                        {{-- categories 是parent --}}
+
+                        @if (!is_null($category->parent_id))
+                            <select name="parent_id" id="" class="block mt-1 w-full">
+                                @foreach ($categories as $categoryMain)
+                                    <option value="{{ $categoryMain->id }}"
+                                        {{ $categoryMain->id == $category->parent_id ? 'selected' : '' }}>
+                                        {{ $categoryMain->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        @endif
 
                         {{-- x-label在laravel8和9版本，
                     使用jetStream时，x-jet-label --}}
