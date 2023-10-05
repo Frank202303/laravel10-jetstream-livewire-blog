@@ -130,7 +130,19 @@ class CategoryController extends Controller
         // only return child Category
         return view(
             'dashboard.categories.subcategory',
+            // 在Category表里，查询 parent_id 字段，查询条件是 parent_id 不为空
+            // Category::with('subCategories') 是 Laravel 中的 Eloquent ORM 的一种使用方式，用于预加载关联模型。
+            // 在 Category模型里，有
+            // public function subCategories()
+            // {
+            //     return $this->hasMany(Category::class, 'parent_id');
+            // }
+            // subCategories 方法使用 hasMany 关联方法定义了一对多关系，用于获取该类别的子类别。'subCategories' 不是一个实际的数据库字段，而是用于定义关联关系的方法名。
+
+            // 在您的控制器代码中，Category::with('subCategories') 使用了该关联方法，表示在查询类别时，也预加载关联的子类别数据，以避免 N+1 查询问题。
+
             ['categories' => Category::with('subCategories')->whereNotNull('parent_id')->get()],
+            // ['categories' => Category::whereNotNull('parent_id')->get()], //这个代码也行
         );
     }
 }

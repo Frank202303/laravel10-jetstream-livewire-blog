@@ -34,14 +34,18 @@
                         {{-- categories 是parent --}}
 
                         @if (!is_null($category->parent_id))
-                            <select name="parent_id" id="" class="block mt-1 w-full">
-                                @foreach ($categories as $categoryMain)
-                                    <option value="{{ $categoryMain->id }}"
-                                        {{ $categoryMain->id == $category->parent_id ? 'selected' : '' }}>
-                                        {{ $categoryMain->name }}
-                                    </option>
-                                @endforeach
-                            </select>
+                            <div>
+                                <small class="mb-4 text-gray-500 ">Please select parent only for subCategory</small>
+                                <select name="parent_id" id="" class="block mt-1 w-full">
+                                    @foreach ($categories as $categoryMain)
+                                        <option value="{{ $categoryMain->id }}"
+                                            {{ $categoryMain->id == $category->parent_id ? 'selected' : '' }}>
+                                            {{ $categoryMain->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         @endif
 
                         {{-- x-label在laravel8和9版本，

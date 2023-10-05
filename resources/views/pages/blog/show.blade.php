@@ -17,9 +17,13 @@
 
         <section class="container pt-24 mx-auto space-y-4">
             <article class="p-4 bg-white">
-                <h1 class="text-2xl mb-2 font-bold">
+                <h1 class="text-2xl mb-2 font-bold flex justify-center">
                     {{ $post->title }}
                 </h1>
+                <div class="flex justify-center mt-7 mb-8">
+                    <img src="{{ Storage::url('images/' . $post->cover_image) }}" class="custom-image-width">
+                </div>
+
                 <div>
                     {!! $post->body !!}
                 </div>
@@ -31,6 +35,11 @@
                 </button>
             </article>
         </section>
+        <style>
+            .custom-image-width {
+                width: 66.6667%;
+            }
+        </style>
 
     </main>
 </x-base-layout>
