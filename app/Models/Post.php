@@ -32,13 +32,13 @@ class Post extends Model
         //                                     外键
         return $this->belongsTo(User::class, 'author_id')->withDefault('Admin User');
     }
-
+    // 一个 post（$this）只能属于 一个分类
     public function category()
     {
         // define relation
         return $this->belongsTo(Category::class);
     }
-
+    // 多对多 关系
     public function tags()
     {
         // define relation
