@@ -10,6 +10,8 @@
 
     {{-- http://127.0.0.1:8000/storage/images/1694752428.3.jpg --}}
 
+    {{-- yield 父让位 --}}
+    {{-- 子继承时：使用@section --}}
     {{-- Title --}}
     @section('title', $post->title)
 
