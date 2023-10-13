@@ -45,11 +45,16 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
         // Route::get('/categories',[CategoryController::class,'index'])->name('categories.index');
         Route::get('/', [CategoryController::class, 'index'])->name('index');
 
+
+        // 通过name categories.create使用该路由时，调用CategoryController::class,里的 'create'方法，return一个view
         Route::get('create', [CategoryController::class, 'create'])->name('create');
+        // 在编辑页面，点击form提交时，通过 name categories.store使用该路由，然后调用CategoryController::class,里的 'store'方法
         Route::post('/', [CategoryController::class, 'store'])->name('store');
+
 
         Route::get('{category:slug}/edit', [CategoryController::class, 'edit'])->name('edit');
         Route::put('{category:slug}', [CategoryController::class, 'update'])->name('update');
+
 
         Route::delete('{category:slug}/delete', [CategoryController::class, 'destroy'])->name('delete');
         //
