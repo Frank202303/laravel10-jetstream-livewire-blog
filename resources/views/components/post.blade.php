@@ -14,7 +14,7 @@
                 {{ $post->title }}
             </div>
             <p class="text-gray-800 text-base px-6 mb-5">
-                {!! Str::limit($post->body, 200, '...') !!}
+                {!! Str::limit(strip_tags($post->body), 50, '...') !!}
             </p>
         </a>
     </div>
