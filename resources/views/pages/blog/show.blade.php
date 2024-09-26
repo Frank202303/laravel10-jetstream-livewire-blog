@@ -1,7 +1,7 @@
 <x-base-layout>
 
     {{-- Meta Description --}}
-    {{-- 填 坑/插槽 --}}
+    {{-- Fill the hole/slot --}}
     @section('meta_description', $post->metaDescriptionFormat())
 
     {{-- Facebook Meta --}}
@@ -10,8 +10,8 @@
 
     {{-- http://127.0.0.1:8000/storage/images/1694752428.3.jpg --}}
 
-    {{-- yield 父让位 --}}
-    {{-- 子继承时：使用@section --}}
+    {{-- yield Father gives way --}}
+    {{-- When child inheriting   : use @section --}}
     {{-- Title --}}
     @section('title', $post->title)
 

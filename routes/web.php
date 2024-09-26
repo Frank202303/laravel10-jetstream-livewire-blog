@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Home Route,                                   通用 别名是'home'
+// Home Route,                                    Alias ​​is 'home'
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
@@ -38,17 +38,17 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
     });
 
     // Categories
-    // 实战  中使用这个，一个命令创建所有路由
-    // 但是教学时，单个创建，易于 理解：
+    // Use this in practice to create all routes with one command
+    // But when teaching, create one at a time for easier understanding:
     // Route::resource('categories', CategoryController::class);
     Route::group(['prefix' => 'categories',  'as' => 'categories.'], function () {
         // Route::get('/categories',[CategoryController::class,'index'])->name('categories.index');
         Route::get('/', [CategoryController::class, 'index'])->name('index');
 
 
-        // 通过name categories.create使用该路由时，调用CategoryController::class,里的 'create'方法，return一个view
+        // When using this route through name categories.create, call the 'create' method in CategoryController::class, and return a view
         Route::get('create', [CategoryController::class, 'create'])->name('create');
-        // 在编辑页面，点击form提交时，通过 name categories.store使用该路由，然后调用CategoryController::class,里的 'store'方法
+        // On the edit page, when you click submit, use the route through name categories.store, and then call the 'store' method in CategoryController::class,
         Route::post('/', [CategoryController::class, 'store'])->name('store');
 
 
@@ -92,9 +92,9 @@ Route::group(['middleware' => ['auth'],  'prefix' => 'dashboard'], function () {
 });
 
 
-// Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); 这个路由是通用的，它可以匹配任何slug格式的URL，包括 dashboard 这样的slug。
-// 路由的优先级和匹配顺序上。Laravel 路由是按照定义的顺序进行匹配的，一旦找到匹配的路由，就会停止继续查找。
-// 所以 将通用路由移到最后
+// Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); This route is generic and can match any URL in slug format, including slugs like dashboard.
+// Routing priority and matching order. Laravel routes are matched in the order they are defined, and once a matching route is found, the search stops.
+// So move the generic route to the end
 // post:slug == post->title
 Route::get('/{post:slug}', [BlogController::class, 'show'])->name('blog.show'); //??
 
