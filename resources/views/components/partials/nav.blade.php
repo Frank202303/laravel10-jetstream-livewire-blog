@@ -14,7 +14,7 @@
                 BLOG
             </a>
         </div>
-        {{-- 当屏幕 是 小 屏幕时：才会 响应式 显示这个 --}}
+        {{-- When the screen is a small screen: it will be displayed responsively --}}
         <div class="block lg:hidden pr-4">
             <button id="nav-toggle"
                 class="flex items-center p-1 text-pink-800 hover:text-gray-900 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
@@ -27,8 +27,8 @@
         <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
             id="nav-content">
             <ul class="list-reset lg:flex justify-end flex-1 items-center">
-                {{-- //添加 blog 链接 --}}
-                {{-- 可以用route('blog')，因为在web.php里有 **->name('blog'); --}}
+                {{-- //Add a blog link --}}
+                {{-- You can use route('blog') because in web.php there is **->name('blog'); --}}
                 <li class="mr-3">
                     <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
                         href="{{ route('blog') }}">Blog</a>
@@ -40,7 +40,7 @@
                         </x-nav-link>
                     </div>
                 @else
-                    {{-- 没有登录 --}}
+                    {{-- Not logged in --}}
                     <li class="mr-3">
                         <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
                             href="{{ route('login') }}">Login</a>
@@ -54,7 +54,7 @@
 
             @auth
                 <!-- Settings Dropdown -->
-                {{-- 如果  已经 登录了，则 显示 账户管理 --}}
+                {{-- If you are already logged in, Account Management will be displayed. --}}
                 <div class="ml-3 relative">
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">

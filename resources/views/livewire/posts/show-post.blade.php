@@ -3,14 +3,14 @@
     <div class="col-span-3 space-y-3">
         @foreach ($posts as $post)
             <div class="bg-indigo">
-                {{-- // 在components新建一个blade文件post.blade.php，我们称为blade component
-                // 在这里可以使用这个component : x-blog.post --}}
-                {{-- 传递参数 --}}
+                {{-- // Create a new blade file post.blade.php in components, we call it blade component
+// You can use this component here: x-blog.post --}}
+                {{-- Pass parameters --}}
                 <x-blog.post :post="$post" />
 
             </div>
         @endforeach
-        {{-- 分页 Page Links --}}
+        {{-- Page Links --}}
         <div class="p-2">
             {{ $posts->links() }}
         </div>
@@ -53,7 +53,7 @@
         <div>
             <div class="p-2 mb-2 text-black">
                 <h2 class="bg-indigo-500 text-white font-bold">Categories</h2>
-                {{-- //flex flex-col items-start：让子元素 竖着排列 --}}
+                {{-- //flex flex-col items-start: Arrange child elements vertically --}}
                 <div class="flex flex-col items-start">
                     @foreach ($categories as $category)
                         <button wire:click='toggleCategory("{{ $category->id }}")'

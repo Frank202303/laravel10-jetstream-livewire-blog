@@ -20,9 +20,9 @@
 <!-- Scripts -->
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-{{-- 在这里需要插入公共/共用模块 --}}
-{{-- yield 父让位 --}}
-{{-- 子继承时：使用@section --}}
+{{-- Public/shared modules need to be inserted here --}}
+{{-- yield parent --}}
+{{-- When inheriting from a child: use @section --}}
 <title>@yield('title', 'Blog')</title>
-{{-- 添加依赖 --}}
+{{-- Add dependencies --}}
 @livewireStyles

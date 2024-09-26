@@ -1,8 +1,8 @@
 <x-app-layout>
-    {{-- 这是 header slot --}}
+    {{--   header slot --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- 这是 nav slot --}}
+            {{--   nav slot --}}
             {{ __('Tags') }}
         </h2>
     </x-slot>
@@ -25,19 +25,19 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="p-4">
-                    {{-- 向数据库更改数据 --}}
+                    {{-- Change data to the database --}}
                     <form action="{{ route('tags.update', $tag) }}" method="POST">
                         @csrf
                         @method('PUT')
 
 
-                        {{-- x-label在laravel8和9版本，
-                    使用jetStream时，x-jet-label --}}
-                        {{-- label.blade.php在components文件夹里。可以自定义 --}}
+                        {{-- x-label in laravel 8 and 9 versions,
+when using jetStream, x-jet-label --}}
+                        {{-- label.blade.php is in the components folder. Can be customized --}}
                         <div>
                             <x-label for="name" value="{{ __('Name') }}" />
                             {{-- syntax error, unexpected token "<" --}}
-                            {{-- 为什么这里不用{{}} --}}
+                            {{-- Why not here?{{}} --}}
                             <x-input id="name" class="block mt-1 w-full" type="text" name="name"
                                 :value="$tag->name" required autofocus autocomplete="name" />
                             <span class="mt-2 text-xs text-gray-400 ">Maximum 200 characters</span>

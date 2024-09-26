@@ -1,4 +1,4 @@
-{{-- 3000毫秒后，把open 设置 为false --}}
+{{-- After 3000 milliseconds, set open to false --}}
 
 @if (session()->has('success'))
     <div x-data="{ open: true }" x-init="setTimeout(() => { open = false }, 3000)" x-show="open" enter="transition duration-500 transform ease-out"

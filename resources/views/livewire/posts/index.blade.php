@@ -111,7 +111,7 @@
                         <td class="px-2 py-4 whitespace-nowrap">
                             {{ $post->id }}
                         </td>
-                        {{-- 最多显示 40个字符 --}}
+                        {{-- Display up to 40 characters --}}
                         <td class="px-2 py-4 whitespace-nowrap">
                             {{ Str::limit($post->title, 40, '...') }}
                         </td>
@@ -121,8 +121,8 @@
                         </td>
 
                         <td class="px-2 py-4 whitespace-nowrap">
-                            {{-- 不能这么写  :name="featured" --}}
-                            {{-- key 有什么作用？ --}}
+                            {{-- You can't write this: name="featured" --}}
+                            {{-- What is the function of key? --}}
                             <livewire:buttons.toggle :post="$post" :name="'featured'" :key="'featured' . $post->id" />
                         </td>
 
@@ -135,7 +135,7 @@
                         </td>
                         <td class="px-2 py-4  text-sm  text-gray-500 whitespace-nowrap">
                             <div class="flex  justify-start space-x-1">
-                                {{-- 带参数的路由 --}}
+                                {{-- Routes with parameters --}}
                                 <a href="{{ route('posts.edit', $post) }}"
                                     class="p-1  border-2 border-indigo-200 rounded-md">
                                     {{-- https://heroicons.com/ --}}
@@ -146,9 +146,9 @@
                                     </svg>
 
                                 </a>
-                                {{-- 删除的路由 --}}
+                                {{-- Deleted routes --}}
 
-                                {{-- 传递 参数 --}}
+                                {{-- pass parameters --}}
                                 <livewire:buttons.delete :post="$post" :key="$post->id" />
 
                             </div>
@@ -160,7 +160,7 @@
             </tbody>
         </table>
 
-        {{-- 添加 pagination --}}
+        {{-- add pagination --}}
         <div class="p-2 bg-indigo-300">
             {{ $posts->links() }}
         </div>

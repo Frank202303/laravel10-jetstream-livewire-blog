@@ -4,9 +4,9 @@
     <div class="flex-1 bg-white rounded-t rounded-b-none overflow-hidden shadow">
         <a href="{{ route('blog.show', $post) }}" class="flex flex-wrap no-underline hover:no-underline">
             {{--
-            删除 rmdir public\storage
-            重新建立public/storage 链接到 storage/app/public
-            图片真正保存在storage/app/public  --}}
+                Delete rmdir public\storage
+                Re-establish the link between public/storage and storage/app/public
+                The image is actually saved in storage/app/public --}}
             <img src="{{ Storage::url('images/' . $post->cover_image) }}" class="w-full">
 
 

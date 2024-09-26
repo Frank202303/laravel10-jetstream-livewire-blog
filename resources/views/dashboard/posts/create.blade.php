@@ -1,8 +1,8 @@
 <x-app-layout>
-    {{-- 这是 header slot --}}
+    {{--  header slot --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- 这是 nav slot --}}
+            {{--   nav slot --}}
             {{ __('Posts') }}
         </h2>
     </x-slot>
@@ -27,9 +27,9 @@
                 <div class="p-4">
                     {{-- https://blade-ui-kit.com/docs/0.x/form --}}
                     <x-form action="{{ route('posts.store') }}" has-files>
-                        {{-- x-label在laravel8和9版本，
-                        使用jetStream时，x-jet-label --}}
-                        {{-- label.blade.php在components文件夹里。可以自定义 --}}
+                        {{-- x-label in laravel 8 and 9 versions,
+when using jetStream, x-jet-label --}}
+                        {{-- label.blade.php is in the components folder. Can be customized --}}
                         <div class="space-y-6">
                             {{-- Cover Image --}}
                             <div>
@@ -79,8 +79,8 @@
                             </div>
 
                             {{-- Tags --}}
-                            {{-- 自定义组件 tags.blade.php在 Component文件夹 --}}
-                            {{-- 传参数 --}}
+                            {{-- Custom component tags.blade.php in the Component folder --}}
+                            {{-- Pass parameters --}}
                             <x-tags :tags="$tags" />
 
 

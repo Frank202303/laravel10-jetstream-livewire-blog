@@ -1,8 +1,8 @@
 <x-app-layout>
-    {{-- 这是 header slot --}}
+    {{--   header slot --}}
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{-- 这是 nav slot --}}
+            {{--   nav slot --}}
             {{ __('Tags') }}
         </h2>
     </x-slot>
@@ -82,7 +82,7 @@
                                 </td>
                                 <td class="px-2 py-4  text-sm  text-gray-500 whitespace-nowrap">
                                     <div class="flex  justify-start space-x-1">
-                                        {{-- 带参数的路由 --}}
+                                        {{-- Routes with parameters --}}
                                         <a href="{{ route('tags.edit', $category) }}"
                                             class="p-1  border-2 border-indigo-200 rounded-md">
                                             {{-- https://heroicons.com/ --}}
@@ -93,7 +93,7 @@
                                             </svg>
 
                                         </a>
-                                        {{-- 删除的路由 --}}
+                                        {{-- Deleted routes --}}
                                         <form action="{{ route('tags.delete', $category) }}" method="POST">
                                             @csrf
                                             @method('Delete')
