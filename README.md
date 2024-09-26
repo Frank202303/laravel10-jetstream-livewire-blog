@@ -1,4 +1,6 @@
 ## Blog Laravel 10 + PHP 8 + Jetstream + Livewire:
+https://www.youtube.com/watch?v=O6e0nY-l9LA
+
 ## 1. Register + Login;
 ## 2. Category: CRUD;
 ## 3. Post: CRUD + search
@@ -7,6 +9,8 @@
 ## 6. Set featured post;
 ## 7. Subscribe to posts: on the Mailchimp database;
 ## 8. Share post on facebook;
+
+
 ![01_blog_project](https://github.com/user-attachments/assets/f7f4ecd6-4476-4678-b7eb-3537b343a600)
 
 ![02_register+login+middleware](https://github.com/user-attachments/assets/66e77682-c80b-4af6-b46e-c1c180a340cf)
