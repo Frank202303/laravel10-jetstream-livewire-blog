@@ -12,11 +12,11 @@ class ShowPost extends Component
     use WithPagination;
     public $category;
     public $sortBy = 'recentDesc';
-    // protected $querystring 是 Livewire 组件中用于定义 URL 查询参数的属性。
-    //这个属性用于定义 Livewire 组件在处理请求时，应该如何处理 URL 查询参数
+    // protected $querystring is a property in the Livewire component that defines URL query parameters.
+    //This property is used to define how the Livewire component should handle URL query parameters when processing requests
     protected $querystring = [
-        //'category' 是查询参数的名称，它表示在 URL 中的查询参数名。
-        //['except' => '']:如果 'category' 查询参数  没有在 URL 中提供，Livewire 将默认将其设置为一个空字符串。
+        //'category' is the name of the query parameter, which represents the query parameter name in the URL.
+        //['except' => '']: If the 'category' query parameter is not provided in the URL, Livewire will default it to an empty string.
         'category'        => ['except' => ''],
         'sortBy'          => ['except' => 'recentDesc'],
     ];
@@ -50,8 +50,8 @@ class ShowPost extends Component
     public function sortBy($sort): void
     {
 
-        // 如果是合法的sort类型，则使用
-        //否则使用默认值recentDesc
+        // If it is a valid sort type, use it
+        // Otherwise use the default value recentDesc
         $this->sortBy =
             $this->validSort($sort) ? $sort : 'recentDesc';
     }

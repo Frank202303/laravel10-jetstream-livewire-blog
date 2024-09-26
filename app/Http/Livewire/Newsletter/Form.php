@@ -33,9 +33,9 @@ class Form extends Component
             'name' => $this->name,
             'email' => $this->email,
         );
-        //    调用 action： EmailSubscriberAction
-        // 调用 __invoke    // 调用 __invoke    // 调用 __invoke
-        // 查询是否有这个email的订阅，如果没有则在数据库 添加
+        // Call action: EmailSubscriberAction
+        // Call __invoke // Call __invoke // Call __invoke
+        // Check if there is a subscription for this email, if not, add it to the database
         (new EmailSubscriberAction)([
             'name' => $this->name,
             'email' => $this->email,
@@ -43,8 +43,8 @@ class Form extends Component
         ]);
 
 
-        // 如果没有订阅，则在 mailchimp 设置为订阅
-        // 用户信息，会保存在 mailchimp server上
+        // If not subscribed, set it as subscription in mailchimp
+        // User information will be saved on mailchimp server
         if (!Newsletter::isSubscribed($this->email)) {
             // https://us21.admin.mailchimp.com/lists/settings/merge-tags?id=318564  has NAME
             Newsletter::subscribe($this->email, [
@@ -52,11 +52,11 @@ class Form extends Component
                 'TOKEN' => $token,
             ]);
         }
-        // 发送 邮件
-        // SubscriberMailable：一个自己创建的 邮件类
+        // Send mail
+        // SubscriberMailable: a self-created mail class
         Mail::to($this->email)
             ->send(new SubscriberMailable($formData));
-        //（邮件被在Mailtrap.io捕获和查看 ）
+        // (Emails are captured and viewed at Mailtrap.io)
         // https://mailtrap.io/inboxes/2426507/messages/3739975196
 
 
@@ -67,5 +67,5 @@ class Form extends Component
     }
 }
 
-///  mailtrap： 用来测试发邮件功能：是否能发出去？ 发了什么  【捕获所有邮件】
- /// spatie/laravel-newsletter是一个基于Laravel框架的电子邮件订阅服务包，它提供了一系列方便的功能来处理电子邮件订阅和取消订阅、发送电子邮件和管理电子邮件列表等
+/// mailtrap: used to test the email sending function: can it be sent? What was sent [capture all emails]
+/// spatie/laravel-newsletter is an email subscription service package based on the Laravel framework, which provides a series of convenient functions to handle email subscription and unsubscription, send emails and manage email lists, etc.

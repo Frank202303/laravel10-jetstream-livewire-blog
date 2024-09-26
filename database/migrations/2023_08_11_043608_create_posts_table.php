@@ -17,33 +17,33 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->longText('body');
-            // 可空 的
+            //
             $table->text('meta_description')->nullable();
             // no           s
             $table->timestamp('published_at')->nullable();
-            // 默认值 0：即 false
+            // Default value 0: false
             $table->boolean('featured')->default(0);
 
-            // 外键
-            //代码是在创建一个外键关系。
-            // 这行代码在 Laravel 的数据库迁移中定义了一个外键关系，将当前表格的 author_id 列与 users 表中的主键列建立了关联
+            // Foreign Keys
+            // The code is creating a foreign key relationship.
+            // This line of code defines a foreign key relationship in Laravel's database migration, associating the author_id column of the current table with the primary key column in the users table
 
-            // foreignId('author_id')：这部分代码表示在表格中创建一个名为 author_id 的外键列。
-            // 这个外键列会与 users 表中的某个主键列建立关联
+            // foreignId('author_id'): This part of the code means creating a foreign key column named author_id in the table.
+            // This foreign key column will be associated with a primary key column in the users table
 
-            // constrained('users')：这部分代码表示将刚刚创建的 author_id 外键列与 users 表进行关联
+            // constrained('users'): This part of the code means associating the author_id foreign key column just created with the users table
 
-            // 这种外键关系的作用是确保在数据库层面维护数据的完整性，通过限制外键列的值只能是被关联表中存在的主键值，从而保证了数据的一致性和准确性。
+            // The purpose of this foreign key relationship is to ensure the integrity of the data at the database level, by limiting the value of the foreign key column to only the primary key value that exists in the associated table, thereby ensuring the consistency and accuracy of the data.
 
             $table->foreignId('author_id')->constrained('users');
 
 
-            /// foreignId('category_id'): 创建一个名为 category_id 的外键列
-            // constrained:将刚刚创建的 category_id 外键列与 categories 表进行关联
+            /// foreignId('category_id'): Create a foreign key column named category_id
+            // constrained: Associate the newly created category_id foreign key column with the categories table
 
-            // onDelete('cascade')：这部分代码指定了当父表中的一行数据被删除时，对应的子表中的数据应该如何处理。
-            // 具体地说，cascade 表示级联删除。
-            // 如果在 categories 表中删除了某一行，那么与该行关联的所有子表中的数据也会被自动删除。
+            // onDelete('cascade'): This part of the code specifies how the corresponding child table data should be handled when a row of data in the parent table is deleted.
+            // Specifically, cascade means cascade deletion.
+            // If a row is deleted in the categories table, the data in all child tables associated with the row will also be automatically deleted.
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
 
             $table->timestamps();

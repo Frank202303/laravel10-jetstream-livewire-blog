@@ -6,8 +6,8 @@ use App\Models\Subscriber;
 
 class EmailSubscriberAction
 {
-    // __invoke 是 PHP 中的一个特殊方法，也被称为魔术方法（magic method）。它允许对象实例像函数一样被调用。
-    // 定义 __invoke
+    // __invoke is a special method in PHP, also known as a magic method. It allows object instances to be called like functions.
+    // Define __invoke
     public function __invoke(array $formData)
     {
         $this->getOrCreateSubsciberEmail($formData);
@@ -15,8 +15,8 @@ class EmailSubscriberAction
 
     private function getOrCreateSubsciberEmail(array $formData): Subscriber
     {
-        // firstOrCreate 是 Laravel Eloquent 模型提供的方法，
-        // 用于查找符合指定条件的记录，如果找到则返回该记录，如果未找到则创建新记录并返回。
+        // firstOrCreate is a method provided by the Laravel Eloquent model,
+        // used to find records that meet the specified conditions, return the record if found, and create a new record and return it if not found.
         return Subscriber::firstOrCreate($formData);
     }
 
@@ -28,6 +28,6 @@ class EmailSubscriberAction
     //         }
     //     }
     //     $instance = new ExampleClass();
-    // $instance('Hello');  // 输出: Called with parameter: Hello
-    /// 这样，实例 $instance 就像一个函数一样被调用，并将 'Hello' 作为参数传递给 __invoke 方法。
+    // $instance('Hello'); // Output: Called with parameter: Hello
+    /// In this way, the instance $instance is called like a function and 'Hello' is passed as a parameter to the __invoke method.
 }

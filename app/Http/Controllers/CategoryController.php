@@ -14,14 +14,14 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        // 从数据库中检索所有顶级分类，同时预加载每个顶级分类关联的子分类数据，以便在一次查询中获取完整的层级结构数据。
-        // Category::with('subCategories')  同时检索主分类和与之关联的子分类数据
-        // ->whereNull('parent_id'): 这是一个查询条件，它限制了只选择 parent_id（父级分类 ID）为空的记录，也就是顶级分类。
-        // get(): 这是一个最终的方法调用，它实际执行数据库查询并检索匹配条件的数据行
+        // Retrieve all top-level categories from the database and preload the sub-category data associated with each top-level category so that the complete hierarchical structure data can be obtained in one query.
+        // Category::with('subCategories') retrieves both the main category and the sub-category data associated with it
+        // ->whereNull('parent_id'): This is a query condition that restricts the selection to only records where the parent_id (parent category ID) is null, that is, the top-level category.
+        // get(): This is the final method call that actually executes the database query and retrieves the data rows that match the condition
         $categories = Category::with('subCategories')->whereNull('parent_id')->get();
         // pass para
         return view('dashboard.categories.index', compact('categories'));
-        // 也可以
+        // you can also
         // return view('dashboard.categories.index',['categories'=> Category::with('subCategories')->whereNull('parent_id')->get()]);
     }
 
@@ -94,8 +94,8 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        // 用于调试!!!!
-        // 输出  {"_token":"D7jNNJApud0WDvgjjeCyt5bw4U6mivUJ2ho7BamJ","_method":"PUT","name":"HolidayTRY"}
+        // For debugging!!!!
+        // Output {"_token":"D7jNNJApud0WDvgjjeCyt5bw4U6mivUJ2ho7BamJ","_method":"PUT","name":"HolidayTRY"}
         // return $request;
 
         $this->validate($request, [
@@ -112,7 +112,7 @@ class CategoryController extends Controller
         $category->save();
 
         return redirect()->route('categories.index')->with('success', 'Category successfully updated');
-        // 调试 专用 return redirect()->route('categories.index')->with('error', 'Category successfully updated');
+        // Debug Dedicated return redirect()->route('categories.index')->with('error', 'Category successfully updated');
     }
 
     /**
@@ -121,7 +121,7 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        // with('success', 'Category deleted');放在session里
+        // with('success', 'Category deleted'); put it in session
         return redirect()->route('categories.index')->with('success', 'Category deleted');
     }
 
@@ -130,19 +130,19 @@ class CategoryController extends Controller
         // only return child Category
         return view(
             'dashboard.categories.subcategory',
-            // 在Category表里，查询 parent_id 字段，查询条件是 parent_id 不为空
-            // Category::with('subCategories') 是 Laravel 中的 Eloquent ORM 的一种使用方式，用于预加载关联模型。
-            // 在 Category模型里，有
+            // In the Category table, query the parent_id field, and the query condition is that parent_id is not empty
+            // Category::with('subCategories') is a way of using Eloquent ORM in Laravel to eagerly load related models.
+            // In the Category model, there is
             // public function subCategories()
             // {
-            //     return $this->hasMany(Category::class, 'parent_id');
+            // return $this->hasMany(Category::class, 'parent_id');
             // }
-            // subCategories 方法使用 hasMany 关联方法定义了一对多关系，用于获取该类别的子类别。'subCategories' 不是一个实际的数据库字段，而是用于定义关联关系的方法名。
+            // The subCategories method uses the hasMany association method to define a one-to-many relationship to get the subcategories of the category. 'subCategories' is not an actual database field, but a method name used to define an association.
 
-            // 在您的控制器代码中，Category::with('subCategories') 使用了该关联方法，表示在查询类别时，也预加载关联的子类别数据，以避免 N+1 查询问题。
+            // In your controller code, Category::with('subCategories') uses this association method, which means that when querying categories, the related subcategory data is also eagerly loaded to avoid the N+1 query problem.
 
             ['categories' => Category::with('subCategories')->whereNotNull('parent_id')->get()],
-            // ['categories' => Category::whereNotNull('parent_id')->get()], //这个代码也行
+            // ['categories' => Category::whereNotNull('parent_id')->get()], // This code also works
         );
     }
 }

@@ -17,8 +17,8 @@ class PostFactory extends Factory
      */
     public function definition(): array
     {
-        /// 因为 在写入post数据时，使用了category_id
-        // 所以 必须先运行 CategorySeeder 然后 才能 PostSeeder
+        /// Because category_id is used when writing post data
+        // So you must run CategorySeeder first and then PostSeeder
         return [
             'cover_image'   => $this->faker->imageUrl($width = 800, $height = 600),
             'title'         => $this->faker->sentence,

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->string('slug');
-            // ->nullable() 必须在 constrained的前面
+            // ->nullable() must come before constrained
             $table->foreignId('parent_id')->nullable()->constrained('categories');
             $table->timestamps();
         });

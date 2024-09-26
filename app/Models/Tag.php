@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tag extends Model
 {
     use HasFactory;
-    // 哪些字段 可以 修改：保护 数据库
+    // Which fields can be modified: protect the database
     protected $fillable = ['name', 'slug'];
 
     public function posts()

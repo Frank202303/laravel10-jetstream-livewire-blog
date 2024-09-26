@@ -39,8 +39,8 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    /// StorePostRequest ：数据 校验
-    // 调试时： 使用Request ！！！
+    /// StorePostRequest: data validation
+    // When debugging: Use Request!!!
     // for PHP 8, the line would be extension=gd
     public function store(StorePostRequest $request)
     {
@@ -89,7 +89,7 @@ class PostController extends Controller
                 . $imageFirstName . '.'
                 . $image->getClientOriginalExtension();
             $location = storage_path('app/public/images/' . $fileExtension);
-            // 压缩 并 保存
+            // Compress and save
             Image::make($image)->resize(1200, 630)->save($location);
             $post->cover_image            =  $fileExtension;
         }
@@ -109,7 +109,7 @@ class PostController extends Controller
     {
         $categories = Category::all();
         $tags = Tag::all();
-        ///  ??? 为什么 没有 提醒
+        ///  ???Why no reminder?
         $oldTags = $post->tags->pluck('id')->toArray();
         return view(
             'dashboard.posts.edit',
@@ -147,7 +147,7 @@ class PostController extends Controller
                 . $imageFirstName . '.'
                 . $image->getClientOriginalExtension();
             $location = storage_path('app/public/images/' . $fileExtension);
-            // 压缩 并 保存
+            // Compress and save
             Image::make($image)->resize(1200, 630)->save($location);
             $post->cover_image            = $fileExtension;
             // delete previous image

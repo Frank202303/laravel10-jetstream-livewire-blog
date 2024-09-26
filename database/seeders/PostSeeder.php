@@ -13,7 +13,7 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        /// 调用 Post的factory 50次
+        /// Call the Post factory 50 times
         Post::factory(50)->create();
     }
 }

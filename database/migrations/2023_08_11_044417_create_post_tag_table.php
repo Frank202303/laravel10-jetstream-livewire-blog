@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->id();
-            // 没有写                                'posts'
+            //                                 'posts'
             $table->foreignId('post_id')->constrained()->onDelete('cascade');
-            // 没有写                               'tags'
+            //                                'tags'
             $table->foreignId('tag_id')->constrained()->onDelete('cascade');
 
             $table->timestamps();

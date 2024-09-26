@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        /// 创建 一个 新 用户
+        /// Create a new user
         User::factory()->create([
             'name'  =>  'Frank Zhang',
             'email'  =>  'Blog.Laravel10@qq.com',

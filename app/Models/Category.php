@@ -9,8 +9,8 @@ class Category extends Model
 {
     use HasFactory;
 
-    // slug:鼻涕虫 for SEO
-    // 哪些字段 可以 修改：保护 数据库
+    // slug: slug for SEO
+    // Which fields can be modified: protect the database
     protected $fillable = [
         'name',
         'slug',
@@ -27,18 +27,18 @@ class Category extends Model
 
     public function subCategories()
     {
-        // 这段代码定义了一个在当前模型中的方法 subCategories，用于建立当前模型与 Category 模型之间的一对多关系。
-        // 在获取当前模型实例时，还会预加载每个实例关联的 categories，以提高查询效率。
+        // This code defines a method subCategories in the current model, which is used to establish a one-to-many relationship between the current model and the Category model.
+        // When getting the current model instance, the categories associated with each instance are also preloaded to improve query efficiency.
 
-        // hasMany(Category::class,'parent_id')：这部分代码表示当前模型拥有多个 Category 模型的实例，即一对多关系。
-        // Category::class 表示关联的模型是 Category 类。
-        // 'parent_id' 是外键列的名称，它用于在当前模型中找到与之相关的子模型。
-        // with('categories')：这部分代码指定了在获取当前模型实例时，一并预加载关联的 categories。
-        // 这可以有效地避免 N+1 查询问题，即在获取多个模型实例时，不会为每个模型实例都执行额外的查询来获取关联数据。
+        // hasMany(Category::class,'parent_id'): This part of the code indicates that the current model has multiple instances of the Category model, that is, a one-to-many relationship.
+        // Category::class indicates that the associated model is the Category class.
+        // 'parent_id' is the name of the foreign key column, which is used to find the child model related to it in the current model.
+        // with('categories'): This part of the code specifies that when getting the current model instance, the associated categories are also preloaded.
+        // This can effectively avoid the N+1 query problem, that is, when getting multiple model instances, no additional query is performed for each model instance to obtain the associated data.
 
 
 
-        //                                 外键
+        //                                 Foreign Keys
         // return $this->hasMany(Category::class,'parent_id')->with('categories');
         return $this->hasMany(Category::class, 'parent_id');
     }

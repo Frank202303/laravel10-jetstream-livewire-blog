@@ -21,11 +21,11 @@ class Delete extends Component
     }
     public function deletePost($id)
     {
-        // 先删除图片
+        // Delete the image first
         File::delete(
             storage_path('app/public/images/' . $this->post->cover_image)
         );
-        // 再 删除post
+        // Then delete the post
         $this->post->delete();
 
         session()->flash('success', 'Post deleted');

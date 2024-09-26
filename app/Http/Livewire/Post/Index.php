@@ -17,8 +17,8 @@ class Index extends Component
 
     public function render()
     {
-        // 通过调用searchPost方法，得到数据，然后筛选，最后分页，
-        //得到的数据，传递到view里
+        // Get the data by calling the searchPost method, then filter it, and finally paginate it.
+        // Pass the obtained data to the view
         return view('livewire.posts.index', [
             'posts' => Post::searchPost($this->search)
                 ->orderBy($this->orderBy, $this->orderAsc ? 'asc' : 'desc')

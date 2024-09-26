@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Builder;
 class Post extends Model
 {
     use HasFactory;
-    // 哪些字段 可以 修改：保护 数据库
+    // Which fields can be modified: protect the database
     protected $fillable = [
         'cover_image',
         'title',
@@ -29,16 +29,16 @@ class Post extends Model
     {
         // post belongs To User
         // define relation
-        //                                     外键
+        //                                     Foreign Keys
         return $this->belongsTo(User::class, 'author_id')->withDefault('Admin User');
     }
-    // 一个 post（$this）只能属于 一个分类
+    // A post ($this) can only belong to one category
     public function category()
     {
         // define relation
         return $this->belongsTo(Category::class);
     }
-    // 多对多 关系
+    // Many-to-many relationship
     public function tags()
     {
         // define relation
@@ -72,12 +72,12 @@ class Post extends Model
     public function metaDescription(): string
     {
         // return $this->meta_description;
-        // 修复TypeError
-        // 原因是meta_description在数据库设置了可以为空
+        // Fix TypeError
+        // The reason is that meta_description is set to be nullable in the database
         // PHP 8.1.17
         // 10.18.0
         // App\Models\Post::metaDescription(): Return value must be of type string, null returned
-        // 所以。使用 is_null检查，万一为空，则使用title拼一个 meta_description
+        // So. Use is_null to check, if it is null, use title to create a meta_description
         return is_null($this->meta_description)
             ? ('<div>' . $this->title . '</div>')
             : $this->meta_description;
@@ -109,7 +109,7 @@ class Post extends Model
             ->orWhere('body', 'like', '%' . $search . '%');
     }
 
-    /// Local Scopes: 类似于 get方法
+    /// Local Scopes: Similar to the get method
     public function scopeCategory(Builder $query, string $category): Builder
     {
         return $query->where('category_id', $category);
@@ -135,7 +135,7 @@ class Post extends Model
     {
         return $query->orderBy('title', 'desc');
     }
-    //  去除 meta description的div
+    // Remove the meta description div
     public function  metaDescriptionFormat()
     {
         return  strip_tags($this->metaDescription());

@@ -11,15 +11,15 @@ class HomeController extends Controller
 {
     // public function __construct()
     // {
-    //     // 只有通过auth认证的人才能 访问这个控制器，
-    //     // except：不对index方法使用auth检查
-    //     return $this->middleware('auth')->except(['index']);
-    //     // only(['index'])：这部分代码指定只在控制器的 index 方法上应用中间件。
-    //     // 这意味着只有当访问控制器的 index 方法时，才会触发身份验证。其他方法将不会受到该中间件的影响。
-    //     // return $this->middleware('auth')->only(['index']);
+    // // Only people who have passed auth authentication can access this controller,
+    // // except: do not use auth check for index method
+    // return $this->middleware('auth')->except(['index']);
+    // // only(['index']): This part of the code specifies that the middleware is only applied to the index method of the controller.
+    // // This means that authentication will only be triggered when the index method of the controller is accessed. Other methods will not be affected by this middleware.
+    // // return $this->middleware('auth')->only(['index']);
 
-    //     // 或者 这么写，可以加多个middle ware
-    //     return $this->middleware([Authenticate::class,IsAdmin::class])->except(['index']);
+    // // Or write like this, you can add multiple middleware
+    // return $this->middleware([Authenticate::class,IsAdmin::class])->except(['index']);
     // }
 
     public function index()

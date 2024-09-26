@@ -14,7 +14,7 @@ class CategorySeeder extends Seeder
      */
     public function run(): void
     {
-        /// 创建 几个 新 分类
+        /// Create several new categories
         DB::table('categories')->insert([
             [
                 'name'  =>  'Holidays',

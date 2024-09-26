@@ -9,13 +9,13 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Mail\Mailables\Address;
-/// 当用户订阅时，发送 邮件给用户
-// 抄送 给 '517277381@qq.com'【admin】
+/// When a user subscribes, send an email to the user
+// Copy to '517277381@qq.com'【admin】
 class SubscriberMailable extends Mailable
 {
     public $data;
 
-    //因为使用了Queueable，所以要在命令行运行  php artisan queue:work
+    //Because Queueable is used, you need to run php artisan queue:work on the command line
     use Queueable, SerializesModels;
 
     /**
@@ -23,7 +23,7 @@ class SubscriberMailable extends Mailable
      */
     public function __construct($formData)
     {
-        // 在构造函数里把formData 数据传给 SubscriberMailable的 $this->data
+        // Pass formData data to SubscriberMailable's $this->data in the constructor
         $this->data = $formData;
     }
 
@@ -33,9 +33,9 @@ class SubscriberMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            // 发件人 及  名字
+            // Sender and Name
             from: new Address('517277381@qq.com', 'YiMDXian'),
-            // 邮件 的 主题/title
+            // Subject/title of the email
             subject: 'Thank you',
         );
     }
