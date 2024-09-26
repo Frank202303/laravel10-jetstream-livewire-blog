@@ -5,7 +5,7 @@
 <meta name="keywords" content="" />
 
 {{-- Facebook Meta --}}
-{{-- 分享文章时需要  url image 和 title --}}
+{{-- URL image and title are required when sharing articles --}}
 <meta property="og:url" content="{{ url()->current() }}" />
 <meta property='og:image' content="{{ config('app.url') }}/@yield('og:image')">
 <meta property='og:title' content="@yield('og:title')" />
